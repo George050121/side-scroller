@@ -1,0 +1,53 @@
+{
+        "image": {
+            "tile_A": "assets/images/tile_A.png",
+            "music1": "assets/images/music1.png",
+            "music3": "assets/images/music3.png",
+            "tile_B": "assets/images/tile_B.png",
+            "tile_C": "assets/images/tile_C.png",
+            "music2": "assets/images/music2.png",
+            "fly2": "assets/images/fly2.png",
+            "tile_G": "assets/images/tile_G.png",
+            "tile_F": "assets/images/tile_F.png",
+            "fly3": "assets/images/fly3.png",
+            "fly1": "assets/images/fly1.png",
+            "tile_D": "assets/images/tile_D.png",
+            "tile_E": "assets/images/tile_E.png",
+            "player3": "assets/images/player3.png",
+            "player2": "assets/images/player2.png",
+            "player1": "assets/images/player1.png",
+            "background": "assets/images/background.png",
+            "bg1": "assets/images/background.png",
+            "bg2": "assets/images/background2.png",
+            "powerup4": "assets/images/powerup4.png",
+            "powerup2": "assets/images/powerup2.png",
+            "heart2": "assets/images/heart2.png",
+            "heart3": "assets/images/heart3.png",
+            "grub2": "assets/images/grub2.png",
+            "powerup3": "assets/images/powerup3.png",
+            "powerup1": "assets/images/powerup1.png",
+            "heart1": "assets/images/heart1.png",
+            "grub1": "assets/images/grub1.png",
+            "tile_H": "assets/images/tile_H.png",
+            "tile_I": "assets/images/tile_I.png",
+            "star1": "assets/images/star1.png",
+            "star3": "assets/images/star3.png",
+            "star2": "assets/images/star2.png",
+            "star4": "assets/images/star4.png"
+        },
+        "spritesheet": {
+            "caveman": "assets/images/spritesheet_caveman.png"
+        },
+        "text": {
+            "map1": "assets/maps/map1.txt",
+            "map2": "assets/maps/map2.txt"
+        },
+        "sound": {
+            "music": "assets/sounds/music.mp3",
+            "prize": "assets/sounds/prize.wav",
+            "boop2": "assets/sounds/boop2.wav"
+        },
+        "json": {
+            "resources": "assets/resources/resources.json"
+        }
+    }

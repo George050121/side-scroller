@@ -1,0 +1,163 @@
+{
+    "sprites": {
+        "caveman": {
+            "type": "Grub",
+            "left": [
+                {"sheet":"caveman", "rows":4, "cols":4, "duration":150}
+            ],
+            "right": [
+                {"sheet":"caveman", "operators":["mirror"], "rows":4, "cols":4, "duration":150}
+            ],
+            "deadRight": [
+                {"sheet":"caveman", "operators":["flip"], "rows":4, "cols":4, "duration":150}
+            ],
+            "deadLeft": [
+                {"sheet":"caveman", "operators":["flip","mirror"], "rows":4, "cols":4, "duration":150}
+            ]
+        },
+        "player": {
+            "type": "Player",
+            "left": [
+                {"img":"player1", "duration":250},
+                {"img":"player2", "duration":150},
+                {"img":"player1", "duration":150},
+                {"img":"player2", "duration":150},
+                {"img":"player3", "duration":200},
+                {"img":"player2", "duration":150}
+            ],
+            "right": [
+		        {"img":"player1", "operators":["mirror"], "duration":250},
+		        {"img":"player2", "operators":["mirror"], "duration":150},
+		        {"img":"player1", "operators":["mirror"], "duration":150},
+		        {"img":"player2", "operators":["mirror"], "duration":150},
+		        {"img":"player3", "operators":["mirror"], "duration":200},
+		        {"img":"player2", "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"player1", "operators":["flip"], "duration":250},
+                {"img":"player2", "operators":["flip"], "duration":150},
+                {"img":"player1", "operators":["flip"], "duration":150},
+                {"img":"player2", "operators":["flip"], "duration":150},
+                {"img":"player3", "operators":["flip"], "duration":200},
+                {"img":"player2", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+		        {"img":"player1", "operators":["mirror","flip"], "duration":250},
+		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
+		        {"img":"player1", "operators":["mirror","flip"], "duration":150},
+		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
+		        {"img":"player3", "operators":["mirror","flip"], "duration":200},
+		        {"img":"player2", "operators":["mirror","flip"], "duration":150}
+            ]
+        },
+        "music": {
+            "type": "Music",
+            "default": [
+                {"img":"music1", "duration":150},
+                {"img":"music2", "duration":150},
+                {"img":"music3", "duration":150}
+            ]
+        },
+        "fly": {
+            "type": "Fly",
+            "left": [
+                {"img":"fly1", "duration":150},
+                {"img":"fly2", "duration":150},
+                {"img":"fly3", "duration":150}
+            ],
+            "right": [
+                {"img":"fly1", "operators":["mirror"], "duration":150},
+                {"img":"fly2", "operators":["mirror"], "duration":150},
+                {"img":"fly3", "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"fly1", "operators":["flip"], "duration":150},
+                {"img":"fly2", "operators":["flip"], "duration":150},
+                {"img":"fly3", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"fly1", "operators":["mirror","flip"], "duration":150},
+                {"img":"fly2", "operators":["mirror","flip"], "duration":150},
+                {"img":"fly3", "operators":["mirror","flip"], "duration":150}
+            ]
+        },
+        "powerup": {
+            "type": "PowerUp",
+            "default": [
+                {"img":"powerup1", "duration":150},
+                {"img":"powerup2", "duration":150},
+                {"img":"powerup3", "duration":150},
+                {"img":"powerup4", "duration":150}
+            ]
+        },
+        "heart": {
+            "type": "Heart",
+            "default": [
+                {"img":"heart1", "duration":150},
+                {"img":"heart2", "duration":150},
+                {"img":"heart3", "duration":150}
+            ]
+        },
+        "grub": {
+            "type": "Grub",
+            "left": [
+                {"img":"grub1", "duration":150},
+                {"img":"grub2", "duration":150}
+            ],
+            "right": [
+                {"img":"grub1", "operators":["mirror"], "duration":150},
+                {"img":"grub2" , "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"grub1", "operators":["flip"], "duration":150},
+                {"img":"grub2", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"grub1", "operators":["mirror","flip"], "duration":150},
+                {"img":"grub2" , "operators":["mirror","flip"], "duration":150}
+            ]
+        },
+        "star": {
+            "type": "Star",
+            "default": [
+                {"img":"star1", "duration":150},
+                {"img":"star2", "duration":150},
+                {"img":"star3", "duration":150},
+                {"img":"star4", "duration":150}
+            ]
+        }
+    },
+    "images": {
+        "background": "background",
+        "bg1": "bg1",
+        "bg2": "bg2",
+        "A": "tile_A",
+        "B": "tile_B",
+        "C": "tile_C",
+        "D": "tile_D",
+        "E": "tile_E",
+        "F": "tile_F",
+        "G": "tile_G",
+        "H": "tile_H",
+        "I": "tile_I"
+    },
+    "sounds": {
+    },
+    "maps": {
+        "TILE_SIZE": 64,
+        "mappings": {
+            "o": "star",
+            "!": "music",
+            "*": "heart",
+            "1": "grub",
+            "2": "fly",
+            "0": "player",
+            "^": "powerup",
+            "-": "caveman"
+        },
+        "levels": [
+            "map1",
+            "map2"
+        ]
+    }
+}

@@ -1,0 +1,3 @@
+# This file ensures the ai_log/ directory is tracked by git.
+# Actual log files are generated automatically by the Claude Code hook
+# defined in .claude/settings.json + .claude/hooks/log_ai.py

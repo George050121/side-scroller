@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "node_modules/@types/p5/index.d.ts",
+    "node_modules/@types/p5/global.d.ts",
+    "node_modules/@types/p5/lib/addons/p5.sound.d.ts",
+    "./myglobal.d.ts"
+  ]
+}

@@ -1,0 +1,26 @@
+image: node:20
+
+validate:
+  script:
+    - npm install
+    - npm run format:check
+    - npm run lint
+    - npm run test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+pages:
+  script:
+    - npm install
+    - npx tsc
+    - mkdir -p public/node_modules/p5/lib/addons
+    - cp index.html styles.css public/
+    - cp -r assets public/assets
+    - cp -r build public/build
+    - cp node_modules/p5/lib/p5.js public/node_modules/p5/lib/
+    - cp node_modules/p5/lib/addons/p5.sound.js public/node_modules/p5/lib/addons/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
