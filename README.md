@@ -1,3 +1,11 @@
+## Your Team
+
+- Jingxue Jie (jjie@wisc.edu)
+- Yanhao Ding (yding275@wisc.edu)
+
+Reach your partner directly by emailing the address above — it's their @wisc.edu NetID email.
+---
+
 # Typescript Game
 
 ## Setup
