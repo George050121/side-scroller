@@ -12,10 +12,13 @@ import json
 import os
 import sys
 import subprocess
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
-TEMP_PROMPTS_FILE = "/tmp/claude_ai_prompts.json"
+# Use the OS temp directory rather than a hardcoded "/tmp". On Windows,
+# "/tmp/..." resolves to <current drive>:\tmp, which normally does not exist.
+TEMP_PROMPTS_FILE = os.path.join(tempfile.gettempdir(), "claude_ai_prompts.json")
 
 
 # ──────────────────────────────────────────────
@@ -24,14 +27,14 @@ TEMP_PROMPTS_FILE = "/tmp/claude_ai_prompts.json"
 
 def load_temp_prompts() -> dict:
     try:
-        with open(TEMP_PROMPTS_FILE) as f:
+        with open(TEMP_PROMPTS_FILE, encoding="utf-8") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
 
 def save_temp_prompts(data: dict):
-    with open(TEMP_PROMPTS_FILE, "w") as f:
+    with open(TEMP_PROMPTS_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f)
 
 
@@ -54,7 +57,9 @@ def parse_transcript(transcript_path: str) -> dict:
     user_messages = []
 
     try:
-        with open(transcript_path) as f:
+        # Transcripts are UTF-8. Without an explicit encoding, Python uses the
+        # system codepage on Windows (GBK, cp1252, ...) and fails to decode.
+        with open(transcript_path, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line:
