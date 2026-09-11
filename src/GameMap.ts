@@ -12,8 +12,18 @@ export function computeParallaxX(
     mapWidth: number,
     bgWidth: number
 ): number {
-    return Math.trunc(offsetX);
+    if (mapWidth === myW) {
+        return 0;
+    }
+
+    return Math.trunc((offsetX * (myW - bgWidth)) / (myW - mapWidth));
 }
+
+export const SCORE_VALUES = {
+    STAR: 100,
+    MUSIC: 50,
+    ENEMY: 200,
+} as const;
 
 export class GameMap {
     tiles: p5.Image[][];
@@ -29,11 +39,13 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    private score: number;
 
     constructor(level: number, resources: ResourceManager, settings: Settings) {
         this.settings = settings;
         this.level = level;
         this.resources = resources;
+        this.score = 0;
         this.initialize();
     }
 
@@ -163,6 +175,33 @@ export class GameMap {
                 sprite.wakeUp();
             }
         });
+
+        this.drawScore();
+    }
+
+    drawScore() {
+        push();
+        textAlign(LEFT, TOP);
+        textSize(28);
+        stroke(0);
+        strokeWeight(4);
+        fill(255);
+        text("Score: " + this.score, 20, 20);
+        pop();
+    }
+
+    getScore(): number {
+        return this.score;
+    }
+
+    addScore(points: number) {
+        if (points > 0) {
+            this.score += points;
+        }
+    }
+
+    resetScore() {
+        this.score = 0;
     }
 
     isCollision(s1: Sprite, s2: Sprite): boolean {
@@ -203,6 +242,7 @@ export class GameMap {
             if (s instanceof Creature) {
                 if (canKill) {
                     s.setState(CreatureState.DYING);
+                    this.addScore(SCORE_VALUES.ENEMY);
                     if (this.settings.playEvents) {
                         this.boop.play();
                     }
@@ -218,19 +258,30 @@ export class GameMap {
         }
     }
 
-    removeSprite(s: Sprite) {
+    removeSprite(s: Sprite): boolean {
         const i = this.sprites.indexOf(s);
-        if (i > -1) this.sprites.splice(i, 1);
+
+        if (i === -1) {
+            return false;
+        }
+
+        this.sprites.splice(i, 1);
+        return true;
     }
 
     acquirePowerUp(p: PowerUp) {
-        this.removeSprite(p);
+        if (!this.removeSprite(p)) {
+            return;
+        }
+
         if (p instanceof Star) {
+            this.addScore(SCORE_VALUES.STAR);
+
             if (this.settings.playEvents) {
                 this.prize.play();
             }
         } else if (p instanceof Music) {
-            // no-op: music notes collected but have no effect yet
+            this.addScore(SCORE_VALUES.MUSIC);
         } else if (p instanceof Heart) {
             this.level += 1;
             this.initialize();
@@ -306,7 +357,8 @@ export class GameMap {
 
     update() {
         if (this.player.getState() == CreatureState.DEAD) {
-            this.initialize(); //start the level over
+            this.resetScore();
+            this.initialize();
             return;
         }
         this.updateSprite(this.player); //moves sprite within the game
