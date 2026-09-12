@@ -3,8 +3,10 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from "./GameManager.js";
 import { Creature, CreatureState } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Invincibility, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Settings } from "./Settings.js";
+
+const INVINCIBILITY_DURATION_MS = 5000;
 
 export function computeParallaxX(
     offsetX: number,
@@ -248,6 +250,12 @@ export class GameMap {
                     const pos = s.getPosition();
                     p.setPosition(p.getPosition().x, pos.y - p.getImage().height);
                     p.jump(true);
+                } else if (p.isInvincible()) {
+                    //invincible players destroy enemies on contact from any side
+                    s.setState(CreatureState.DYING);
+                    if (this.settings.playEvents) {
+                        this.boop.play();
+                    }
                 } else {
                     p.setState(CreatureState.DYING);
                 }
@@ -284,6 +292,11 @@ export class GameMap {
         } else if (p instanceof Heart) {
             this.level += 1;
             this.initialize();
+        } else if (p instanceof Invincibility) {
+            this.player.activateInvincibility(INVINCIBILITY_DURATION_MS);
+            if (this.settings.playEvents) {
+                this.prize.play();
+            }
         }
     }
 

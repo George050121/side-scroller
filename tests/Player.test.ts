@@ -99,4 +99,42 @@ describe("Player", () => {
         player.addVelocity(0, 0.3);
         expect(player.getVelocity().y).toBeCloseTo(0.3);
     });
+
+    describe("invincibility power-up", () => {
+        it("starts not invincible", () => {
+            expect(player.isInvincible()).toBe(false);
+        });
+
+        it("activateInvincibility() makes isInvincible() true", () => {
+            player.activateInvincibility(5000);
+            expect(player.isInvincible()).toBe(true);
+        });
+
+        it("update(deltaTime) counts the timer down", () => {
+            player.activateInvincibility(1000);
+            player.update(400);
+            expect(player.invincibleTime).toBe(600);
+            expect(player.isInvincible()).toBe(true);
+        });
+
+        it("expires once the timer reaches zero, never going negative", () => {
+            player.activateInvincibility(500);
+            player.update(800); // overshoots the remaining duration
+            expect(player.invincibleTime).toBe(0);
+            expect(player.isInvincible()).toBe(false);
+        });
+
+        it("update(deltaTime) is a no-op on the timer when not invincible", () => {
+            player.update(1000);
+            expect(player.invincibleTime).toBe(0);
+            expect(player.isInvincible()).toBe(false);
+        });
+
+        it("re-activating while already invincible resets the full duration", () => {
+            player.activateInvincibility(1000);
+            player.update(900);
+            player.activateInvincibility(5000);
+            expect(player.invincibleTime).toBe(5000);
+        });
+    });
 });

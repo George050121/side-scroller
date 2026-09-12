@@ -25,5 +25,5 @@
                                                   o        2      
                                   2                2 EF           
      0           EF                                 EGD           
-        EF  1  - CD       1           1            EGAD     *     
+        EF^ 1  - CD       1           1            EGAD     *
 BBBBBBBBGHBBBBBBBGHBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGAAHBBBBBBBBBBBB
