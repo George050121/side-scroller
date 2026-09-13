@@ -15,7 +15,6 @@ export function computeParallaxX(
     if (mapWidth === myW) {
         return 0;
     }
-
     return Math.trunc((offsetX * (myW - bgWidth)) / (myW - mapWidth));
 }
 
