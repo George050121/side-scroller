@@ -135,9 +135,11 @@ describe("GameMap scoring system", () => {
         vi.stubGlobal("pop", vi.fn());
         vi.stubGlobal("textAlign", vi.fn());
         vi.stubGlobal("textSize", vi.fn());
+        vi.stubGlobal("noStroke", vi.fn());
         vi.stubGlobal("stroke", vi.fn());
         vi.stubGlobal("strokeWeight", vi.fn());
         vi.stubGlobal("fill", vi.fn());
+        vi.stubGlobal("rect", vi.fn());
         vi.stubGlobal("text", textMock);
         vi.stubGlobal("LEFT", "left");
         vi.stubGlobal("TOP", "top");
@@ -145,6 +147,6 @@ describe("GameMap scoring system", () => {
         map.addScore(250);
         map.drawScore();
 
-        expect(textMock).toHaveBeenCalledWith("Score: 250", 20, 20);
+        expect(textMock).toHaveBeenCalledWith("Score: 250", 20, 18);
     });
 });

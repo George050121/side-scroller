@@ -1,0 +1,26 @@
+# Map file for tile-based game
+# (Lines that start with '#' are comments)
+# (Lines that start with '@' describe map-level information)
+#
+# The symbols are:
+#   (Space) Empty tile
+#   A..Z    Tiles A through Z
+#   a..z    Animated Tiles
+#   symbols (other than @ or #) Power-ups
+#   0       Player
+#   1-9     Different Bad Guys
+#   o       Star
+#   !       Music Note
+#   *       Heart (advances to the next level)
+#   1       Bad Guy 1 (grub)
+#   2       Bad Guy 2 (fly)
+@parallax-layer bg1
+@parallax-layer bg2
+@music music
+                                                                           
+                                                              2            
+                    o   o   o                       IIIII        o        
+              o           o          2                                    
+     0    EF        ^  1      IIIIIII         EF  -    !       IIIII     o
+        EGD                              EF      CD          EF     1    *
+BBBBBBBBGHBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGHBBBBBBBBGHBBBBBBBBBBBBBGHBBBBBBBBBB

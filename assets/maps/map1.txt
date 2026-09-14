@@ -24,6 +24,6 @@
                       IIIIIII      IIIIIII       o     o         2 
                                                   o        2      
                                   2                2 EF           
-     0           EF                                 EGD           
+     0           EF                  ^              EGD           
         EF^ 1  - CD       1           1            EGAD     *
 BBBBBBBBGHBBBBBBBGHBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGAAHBBBBBBBBBBBB
