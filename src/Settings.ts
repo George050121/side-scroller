@@ -13,6 +13,25 @@ export class Settings {
         this.menu = createDiv();
         this.menu.style("background-color", "rgba(0,0,0,0.75)");
         this.menu.position(30, 30);
+        this.menu.style("color", "white");
+        this.menu.style("font-family", "Arial, sans-serif");
+        this.menu.style("padding", "20px");
+        this.menu.style("box-sizing", "border-box");
+
+        const heading = createElement("h2", "How to Play");
+        heading.style("margin", "0 0 12px");
+        this.menu.child(heading);
+
+        const controls = createP(
+            "Left / Right arrow keys: Move<br>" +
+                "Space: Jump<br>" +
+                "M: Open or close this menu<br>" +
+                "Escape: Toggle fullscreen"
+        );
+        controls.style("font-size", "20px");
+        controls.style("line-height", "1.7");
+        controls.style("margin", "0 0 24px");
+        this.menu.child(controls);
         const music = createCheckbox("Play Music", this.playMusic);
         music.changed(this.togglePlayMusic.bind(this));
         this.menu.child(music);
