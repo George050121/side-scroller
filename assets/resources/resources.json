@@ -82,7 +82,7 @@
             ]
         },
         "powerup": {
-            "type": "PowerUp",
+            "type": "Invincibility",
             "default": [
                 {"img":"powerup1", "duration":150},
                 {"img":"powerup2", "duration":150},

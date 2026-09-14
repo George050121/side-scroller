@@ -1,6 +1,6 @@
 import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Invincibility, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
 
 export class ResourceManager {
@@ -154,6 +154,10 @@ export class ResourceManager {
             }
             case "Music": {
                 s = new Music();
+                break;
+            }
+            case "Invincibility": {
+                s = new Invincibility();
                 break;
             }
             default: {

@@ -4,16 +4,33 @@ export class Player extends Creature {
     MAX_SPEED: number;
     JUMP_SPEED: number;
     onGround: boolean;
+    invincibleTime: number;
 
     constructor() {
         super();
         this.MAX_SPEED = 0.5;
         this.JUMP_SPEED = 0.95;
         this.onGround = false;
+        this.invincibleTime = 0;
     }
 
     getMaxSpeed() {
         return this.MAX_SPEED;
+    }
+
+    activateInvincibility(durationMs: number) {
+        this.invincibleTime = durationMs;
+    }
+
+    isInvincible(): boolean {
+        return this.invincibleTime > 0;
+    }
+
+    update(deltaTime: number) {
+        super.update(deltaTime);
+        if (this.invincibleTime > 0) {
+            this.invincibleTime = Math.max(0, this.invincibleTime - deltaTime);
+        }
     }
 
     collideVertical() {
