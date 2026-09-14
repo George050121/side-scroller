@@ -182,12 +182,13 @@ export class GameMap {
 
     drawScore() {
         push();
+        noStroke();
+        fill(10, 10, 30, 180);
+        rect(12, 12, 150, 34, 6);
         textAlign(LEFT, TOP);
-        textSize(28);
-        stroke(0);
-        strokeWeight(4);
+        textSize(24);
         fill(255);
-        text("Score: " + this.score, 20, 20);
+        text("Score: " + this.score, 20, 18);
         pop();
     }
 

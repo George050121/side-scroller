@@ -17,10 +17,10 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-                                                                          o
-                                                              2           o
-                    o   o   o                       IIIII        o       o
-              o           o          2                                   o
+                                                                           
+                                                              2            
+                    o   o   o                       IIIII        o        
+              o           o          2                                    
      0    EF        ^  1      IIIIIII         EF  -    !       IIIII     o
         EGD                              EF      CD          EF     1    *
 BBBBBBBBGHBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGHBBBBBBBBGHBBBBBBBBBBBBBGHBBBBBBBBBB
