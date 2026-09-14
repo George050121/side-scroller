@@ -43,7 +43,7 @@
             "map2": "assets/maps/map2.txt"
         },
         "sound": {
-            "music": "assets/sounds/music.mp3",
+            "music": "assets/sounds/music.wav",
             "prize": "assets/sounds/prize.wav",
             "boop2": "assets/sounds/boop2.wav"
         },
