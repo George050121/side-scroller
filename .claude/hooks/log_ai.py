@@ -12,10 +12,11 @@ import json
 import os
 import sys
 import subprocess
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
-TEMP_PROMPTS_FILE = "/tmp/claude_ai_prompts.json"
+TEMP_PROMPTS_FILE = os.path.join(tempfile.gettempdir(), "claude_ai_prompts.json")
 
 
 # ──────────────────────────────────────────────
@@ -225,6 +226,13 @@ def git_commit(repo_root: Path, log_file: Path):
         return
 
     print(f"✅ ai_log committed: {rel}", file=sys.stderr)
+
+    result = run(["git", "push"])
+    if result.returncode != 0:
+        print(f"⚠️ ai_log commit made but push failed: {result.stderr.strip()}", file=sys.stderr)
+        return
+
+    print(f"✅ ai_log pushed: {rel}", file=sys.stderr)
 
 
 # ──────────────────────────────────────────────
