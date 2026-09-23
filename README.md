@@ -1,36 +1,62 @@
-## Your Team
+# Side-Scroller
 
-- Jingxue Jie (jjie@wisc.edu)
-- Yanhao Ding (yding275@wisc.edu)
+A neon-circuit platformer written in TypeScript on top of [p5.js](https://p5js.org). Run, jump, stomp enemies, grab an invincibility orb, and chase a high score across three levels.
 
-Reach your partner directly by emailing the address above — it's their @wisc.edu NetID email.
----
+Built by Yanhao Ding and Jingxue Jie for CS 639 (AI-assisted software development) at UW-Madison, starting from a course-provided starter game.
 
-## Play Your Game
+## Controls
 
-Play the game live: https://side-scroller-jjie-yding275-7fca29.pages.doit.wisc.edu
----
+| Key | Action |
+| --- | --- |
+| Left / Right arrow | Move |
+| Space | Jump |
+| M | Open or close the menu (controls, music and sound toggles) |
+| Escape | Toggle fullscreen |
 
-# Typescript Game
+## What we added to the starter
 
-## Setup
+- **Parallax fix** — `computeParallaxX` ignored its inputs, so every background layer scrolled at the same speed as the tiles. Layers now scroll in proportion to their width: farther layers move slower.
+- **Invincibility power-up** — a glowing orb that lets the player destroy enemies on contact for 5 seconds (Yanhao).
+- **Scoring system** — points for stars, music notes, and defeated enemies, shown in an on-screen HUD (Jingxue).
+- **New look and sound** — every image and audio file was replaced with procedurally generated neon-circuit art and synthesized music and effects, and a third level was added.
+- **In-game instructions** — the menu lists every control (Jingxue).
+- **Unit tests** — 80 Vitest tests covering the parallax fix, both features, collision logic, input handling, and the creature/player state machines.
 
-1. On your computer you will need to have several pieces of software installed:
+## Run it locally
 
-* node.js and npm -- You can download and install from [here](https://www.npmjs.com/get-npm)
-* visual studio code -- This is an optional IDE but I recommend it.  It has several built-in features that make it easy for working with TypeScript and Node.  You can download and install from [here](https://code.visualstudio.com/download)
-* git -- You can download and install from [here](https://git-scm.com/downloads).
+Requires Node.js 20 or newer.
 
-2. Clone this repository to your computer.
+```bash
+npm install
+npm run start
+```
 
-This will create a directory on your computer called **side_scroller** which will contain the contents of this game.
+`npm run start` compiles the TypeScript in watch mode and serves the game with live reload.
 
-3. Next, you will need to setup all the libraries the game depends on.  Go to the **side_scroller** directory and run the following command to create a **node_modules** directory and install the needed libraries into it.
+Other scripts:
 
-`npm install`
+```bash
+npm test              # run the unit tests
+npm run lint          # ESLint
+npm run format:check  # Prettier
+```
 
-Your game should be all setup.
+## How it is organized
 
-If you are using Visual Studio Code, you can open the directory and use the node script to start a web server and monitor changes.  You can also do this from the command line by typing:
+| Path | Role |
+| --- | --- |
+| `src/Main.ts` | p5 entry point: `preload`, `setup`, `draw`, key handlers |
+| `src/GameManager.ts` | Loading, menu, and running state machine; turns input into player actions |
+| `src/GameMap.ts` | Level parsing, physics, collision, camera, parallax, scoring |
+| `src/ResourceManager.ts` | Loads assets and builds sprite prototypes from JSON definitions |
+| `src/InputManager.ts`, `src/GameAction.ts` | Keyboard mapping and press/release state |
+| `src/Settings.ts` | The menu overlay |
+| `src/sprites/` | `Sprite` → `Creature` → `Player`, `Grub`, `Fly`; `PowerUp` and its subclasses |
+| `assets/` | Images, sounds, level maps (`assets/maps/`), and sprite definitions (`assets/resources/`) |
+| `tests/` | Vitest unit tests |
 
-npm run-script start
+Levels are plain text files: letters `A`-`Z` are tiles, digits and symbols are the player, enemies, and pickups, and `@parallax-layer` / `@music` lines set the background and soundtrack. The symbol table is in `assets/resources/resources.json`.
+
+## Credits
+
+Game engine and starter code provided by the CS 639 course staff. Gameplay changes, art, audio, levels, and tests by the authors above. The repository history includes `ai_log/`, the record of the Claude Code sessions used during development.
